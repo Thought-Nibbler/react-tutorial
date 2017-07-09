@@ -71,11 +71,15 @@ var CommentForm = React.createClass({
         return;
     },
     render: function() {
+        var randomFlag = ((Math.round(Math.random() * 10) % 2) === 0);
+        var buttonStyle = {
+            color : (randomFlag ? 'red' : 'blue')
+        };
         return (
             <div className="commentForm">
               <input type="text" placeholder="Your name" ref="author" />
               <input type="text" placeholder="Say something..." ref="text" />
-              <input type="button" value="Post" onClick={this.onSubmit} />
+              <input type="button" value="Post" onClick={this.onSubmit} style={buttonStyle} />
             </div>
         );
     }
