@@ -1,3 +1,5 @@
+import CommentList from './commentList.js';
+
 var CommentBox = React.createClass({
     loadCommentsFromServer: function() {
         $.ajax({
@@ -80,34 +82,6 @@ var CommentForm = React.createClass({
               <input type="text" placeholder="Your name" ref="author" />
               <input type="text" placeholder="Say something..." ref="text" />
               <input type="button" value="Post" onClick={this.onSubmit} style={buttonStyle} />
-            </div>
-        );
-    }
-});
-
-var CommentList = React.createClass({
-    render: function() {
-        var comments = this.props.data.map(function(data) {
-            return(
-                <Comment author={data.author} text={data.text} key={data.id} />
-            );
-        }).reverse();
-        return (
-            <div className="commentList">
-              {comments}
-            </div>
-        );
-    }
-});
-
-var Comment = React.createClass({
-    render: function() {
-        return(
-            <div className="comment">
-              <h2 className="commentAuthor">
-                {this.props.author}
-              </h2>
-              {this.props.text}
             </div>
         );
     }
